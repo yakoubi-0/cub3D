@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ylabrahm <ylabrahm@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ayakoubi <ayakoubi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/29 08:30:09 by ylabrahm          #+#    #+#             */
-/*   Updated: 2023/09/13 20:33:25 by ylabrahm         ###   ########.fr       */
+/*   Updated: 2023/09/14 22:27:28 by ayakoubi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,34 @@
 #include <math.h>
 #include "MLX42.h"
 #include <limits.h>
+# include <fcntl.h>
+# include "../gnl/get_next_line.h"
+# include "../libft/libft.h"
+# include "../ft_printf/ft_printf.h"
 
 // --------
 #define DEG_TO_RAD (M_PI / 180.0)
+
+
+// ============     PARSER  =============
+
+#define FALSE 0
+#define TRUE 1
+
+typedef struct s_data_maps
+{
+	char	*textures[4];
+	int	F[3];
+	int	C[3];
+	char	**map;
+}	t_data_maps;
+
+typedef struct s_corMap
+{
+	int x;
+	int y;
+} t_corMap;
+
 
 typedef struct player_s
 {
@@ -83,3 +108,20 @@ void ft_hooks(data_t *data);
 float cast_ray(data_t *data, float angle);
 void draw_3d_walls(data_t *data, hitRay_t ray, int ray_num);
 void clear_screen(data_t *data);
+
+// =========	parsing map functions	=========
+void	init_data(t_data_maps *data);
+int		read_map(int fd, char *fileMap, t_data_maps *data);
+void	get_textures(char *line, t_data_maps *data, int *pos);
+int		get_color(char *line, t_data_maps *data, int *pos);
+int		count_line_map(char *line, int fd);
+void	get_map(char *fileMap, t_data_maps *data, int pos, int count);
+int		check_errors(t_data_maps *data, t_list *list);
+int		check_errors_textures(char **textures);
+int		check_errors_colors(t_data_maps *data);
+int		check_errors_map(t_data_maps *data, t_list *list);
+
+// ==========	PARSING UTILS FUNCTIONS	==============
+void	free_2d_array(char **str);
+t_corMap	*init_corMap(char **map);
+int			check_intruderInMap(char **map);

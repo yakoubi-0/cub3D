@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_3d_walls.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ylabrahm <ylabrahm@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ayakoubi <ayakoubi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/03 16:49:03 by ylabrahm          #+#    #+#             */
-/*   Updated: 2023/09/14 19:44:54 by ylabrahm         ###   ########.fr       */
+/*   Updated: 2023/09/14 22:30:27 by ayakoubi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,19 +59,19 @@ void draw_wall_column(data_t *data, vect_t v1, int columnHeight, hitRay_t ray)
     c_tex.x = ((int) ray.x_hit % data->grid_size);
     c_tex.y = ((int) ray.y_hit % data->grid_size);
 
-    draw_one_culumn_textur(data, c_img, c_tex);
+    //draw_one_culumn_textur(data, c_img, c_tex);
     
     
-    // for (int y = v1.y; y < v1.y + columnHeight; y++)
-    // {
-    //     for (int x = v1.x; x < v1.x + thick; x++)
-    //     {
-    //         if ((x >= 0 && x < data->game->width) && (y >= 0 && y < data->game->height))
-    //         {
-    //             mlx_put_pixel(data->game, x, y, color);
-    //         }
-    //     }
-    // }
+    for (int y = v1.y; y < v1.y + columnHeight; y++)
+    {
+        for (int x = v1.x; x < v1.x + thick; x++)
+        {
+            if ((x >= 0 && x < data->game->width) && (y >= 0 && y < data->game->height))
+            {
+                mlx_put_pixel(data->game, x, y, color);
+            }
+        }
+    }
 }
 
 
