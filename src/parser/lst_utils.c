@@ -1,0 +1,43 @@
+#include "cub3d.h"
+
+t_listMap	*newlist(int x, int y)
+{
+	t_listMap	*node;
+
+	node = malloc(sizeof(t_listMap));
+	if (!node)
+		return (0);
+	node->x = x;
+	node->y = y;
+	node->next = NULL;
+	return (node);
+}
+
+
+int	lstadd(t_listMap *lst, t_listMap *newnode, char	**map, int var)
+{
+	t_listMap	*tmp;
+
+	if (!newnode || !lst)
+		return (TRUE);
+	tmp = lst;
+	while (tmp->next)
+	{
+		if (tmp->x == newnode->x && tmp->y == newnode->y)
+		{
+			free(newnode);
+			return (TRUE);
+		}
+		tmp = tmp->next;
+	}
+	if (tmp->x == newnode->x && tmp->y == newnode->y)
+	{
+		free(newnode);
+		return (TRUE);
+	}
+	if (var == -1 && map[newnode->y][newnode->x] != 1
+		&& map[newnode->y][newnode->x] != 0)
+			return (FALSE);
+	tmp->next = newnode;
+	return (TRUE);
+}

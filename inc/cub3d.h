@@ -16,7 +16,7 @@
 #include <string.h>
 #include <unistd.h>
 #include <math.h>
-#include "MLX42.h"
+//#include "MLX42.h"
 #include <limits.h>
 # include <fcntl.h>
 # include "../gnl/get_next_line.h"
@@ -46,7 +46,14 @@ typedef struct s_corMap
 	int y;
 } t_corMap;
 
+typedef struct s_listMap
+{
+	int x;
+	int y;
+	struct s_listMap *next;
+}	t_listMap;
 
+/*
 typedef struct player_s
 {
     double x;
@@ -108,6 +115,7 @@ void ft_hooks(data_t *data);
 float cast_ray(data_t *data, float angle);
 void draw_3d_walls(data_t *data, hitRay_t ray, int ray_num);
 void clear_screen(data_t *data);
+*/
 
 // =========	parsing map functions	=========
 void	init_data(t_data_maps *data);
@@ -120,8 +128,12 @@ int		check_errors(t_data_maps *data, t_list *list);
 int		check_errors_textures(char **textures);
 int		check_errors_colors(t_data_maps *data);
 int		check_errors_map(t_data_maps *data, t_list *list);
-
+int		loopForMap(char **map, t_corMap *pos);
 // ==========	PARSING UTILS FUNCTIONS	==============
 void	free_2d_array(char **str);
 t_corMap	*init_corMap(char **map);
 int			check_intruderInMap(char **map);
+
+t_listMap	*newlist(int x, int y);
+int 		lstadd(t_listMap *lst, t_listMap *newnode, char **map, int var);
+

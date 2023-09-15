@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "../inc/cub3d.h"
-
+/*
 void ft_init(data_t *data, t_data_maps *map)
 {
 	data->mlx = mlx_init(1024, 1024, "cub3d", false);
@@ -53,10 +53,10 @@ void ft_init(data_t *data, t_data_maps *map)
 	mlx_put_string(data->mlx, "33-34", 10, 10);
 	//
 }
-
+*/
 int main(int ac, char **av)
 {
-	data_t *data;
+	//data_t *data;
 	t_data_maps data_map;
 	t_list list;
 
@@ -68,11 +68,12 @@ int main(int ac, char **av)
 		return (printf("ERROR\n"), 1);
 	if (check_errors(&data_map, &list) == FALSE)
 		return (printf("ERROR\n"), 1);
-	data = malloc(sizeof(data_t));
-	ft_init(data, &data_map);
-	ft_hooks(data);
-	mlx_loop(data->mlx);
-	mlx_terminate(data->mlx);
-	system("clear");
-	return (free(data), EXIT_SUCCESS);
+//	data = malloc(sizeof(data_t));
+//	ft_init(data, &data_map);
+//	ft_hooks(data);
+//	mlx_loop(data->mlx);
+//	mlx_terminate(data->mlx);
+//	system("clear");
+//	return (free(data), EXIT_SUCCESS);
+	return (0);
 }

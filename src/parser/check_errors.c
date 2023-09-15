@@ -74,5 +74,68 @@ int check_errors_map(t_data_maps *data, t_list *list)
 	posStart = init_corMap(data->map);
 	if (posStart == FALSE)
 		return (FALSE);
+	if (loopForMap(data->map, posStart) == FALSE)
+		return (FALSE);
+	return (TRUE);
+}
+
+int loopForMap(char **map, t_corMap *pos)
+{
+	t_listMap *cur;
+	t_listMap *first;
+	int	var;
+
+	var = 0;
+	first = newlist(pos->x, pos->y);
+	cur = first;
+	while (cur)
+	{/*
+		if (cur->x != first->x && cur->y != cur->y)
+		{
+			if (map[cur->y][cur->x] == '0')
+			{
+				var = -1;
+				if (lstadd(cur, newlist(cur->x + 1, cur->y), map, var) == FALSE)
+					return (FALSE);
+				if (lstadd(cur, newlist(cur->x - 1, cur->y), map, var) == FALSE)
+					return (FALSE);
+				if (lstadd(cur, newlist(cur->x, cur->y + 1), map, var) == FALSE)
+					return (FALSE);
+				if (lstadd(cur, newlist(cur->x, cur->y - 1), map, var) == FALSE)
+					return (FALSE);
+			}
+			else
+			{
+				if (map[cur->y][cur->x + 1] == '1'
+					|| map[cur->y][cur->x + 1] == '0')
+					lstadd(cur, newlist(cur->x + 1, cur->y), map, var);
+				if (map[cur->y][cur->x - 1] == '1'
+					|| map[cur->y][cur->x - 1] == '0')
+					lstadd(cur, newlist(cur->x - 1, cur->y), map,var);
+				if (map[cur->y + 1][cur->x] == '1'
+					|| map[cur->y + 1][cur->x] == '0');
+					lstadd(cur, newlist(cur->x, cur->y + 1), map, var);
+				if (map[cur->y - 1][cur->x] == '1'
+					|| map[cur->y - 1][cur->x] == '0')
+					lstadd(cur, newlist(cur->x, cur->y - 1), map, var);
+			}
+		}
+		else
+		{*/
+			if (map[cur->y][cur->x + 1] == '1'
+				|| map[cur->y][cur->x + 1] == '0')
+				lstadd(cur, newlist(cur->x + 1, cur->y), map, var);
+			if (map[cur->y][cur->x - 1] == '1'
+				|| map[cur->y][cur->x - 1] == '0')
+				lstadd(cur, newlist(cur->x - 1, cur->y), map, var);
+			if (map[cur->y + 1][cur->x] == '1'
+				|| map[cur->y + 1][cur->x] == '0');
+				lstadd(cur, newlist(cur->x, cur->y + 1), map, var);
+			if (map[cur->y - 1][cur->x] == '1'
+				|| map[cur->y - 1][cur->x] == '0')
+				lstadd(cur, newlist(cur->x, cur->y - 1), map, var);
+		//}
+		cur = cur->next;
+	}
 	return (TRUE);
 }	

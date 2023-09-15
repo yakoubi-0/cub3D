@@ -13,23 +13,23 @@
 ########## NAMES ##############
 NAME	= cub3D
 INC		= inc 
-IMLX	= -I MLX42/include
+IMLX	= #-I MLX42/include
 
 ########## COMMPILATION ##############
 CC = cc
-MLX = MLX42/build/libmlx42.a
-FRAMEWORKS = -framework Cocoa -framework OpenGL -framework IOKit
-GLFW = -I include -lglfw -L"/goinfre/$(USER)/homebrew/opt/glfw/lib/"
-ARCH = MLX42/build/libmlx42.a
-CFLAGS = -fsanitize=address -g #-Wall -Wextra -Werror
+MLX = #MLX42/build/libmlx42.a
+FRAMEWORKS = #-framework Cocoa -framework OpenGL -framework IOKit
+GLFW = #-I include -lglfw -L"/goinfre/$(USER)/homebrew/opt/glfw/lib/"
+ARCH = #MLX42/build/libmlx42.a
+CFLAGS = #-fsanitize=address -g #-Wall -Wextra -Werror
 
 ######### SRCS & OBJS ###############
 SRCDIR	 	=	src
 PRSDIR		=	parser
 OBJDIR		=	obj
 
-SRCS		  := main drawing_tools draw_map hooks draw_3d_walls
-PARSERSRC 		:=		parser init_data check_errors utils
+SRCS		  := main #drawing_tools draw_map hooks draw_3d_walls
+PARSERSRC 		:=		parser init_data check_errors utils lst_utils
 
 SRC				:=      $(addprefix $(SRCDIR)/, $(addsuffix .c, $(SRCS)))
 OBJ             :=      $(addprefix $(OBJDIR)/, $(addsuffix .o, $(SRCS)))
